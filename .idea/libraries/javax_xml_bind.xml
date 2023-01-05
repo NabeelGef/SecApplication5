@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javax.xml.bind">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/javax.xml.bind.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/mysql-connector-j-8.0.31.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
