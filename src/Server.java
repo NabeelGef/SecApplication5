@@ -97,7 +97,7 @@ public class Server {
                                 {
                                     if (clientHandler0.getConnectionNumber().equals(clientHandlerArrayList.get(i).getClientNumber()))
                                     {
-                                        System.out.println("hhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaa");
+                                        System.out.println("Connection Success...");
                                         clientHandler0.start();
                                         clientHandlerArrayList.get(i).start();
                                         clientHandler0.makeConnectionWithAnotherClient(clientHandlerArrayList.get(i) ) ;
@@ -127,7 +127,8 @@ public class Server {
     }
 
 
-    public void CreateCSR() throws IOException, NoSuchAlgorithmException, SignatureException, InvalidKeyException {
+    public void CreateCSR() throws IOException, NoSuchAlgorithmException, SignatureException,
+            InvalidKeyException {
         String Subject = "https://Server.com";
         csrserver = new CSR(Subject , publicKey,null,null);
         try {
@@ -141,7 +142,11 @@ public class Server {
             publicKeyCA = csrserver.getPublicKeyCA();
             boolean isSign = Crypto.VERIFYINGSIGN(csrserver.getSign(),csrserver.getSubject(),publicKeyCA);
             if(isSign){
-                System.out.println("ServerGetItCA");
+                System.out.println("Server Get It CA");
+                System.out.println("========================");
+                System.out.println("CSR SERVER : " +"\n publicKey : " +
+                        DatatypeConverter.printHexBinary(csrserver.getPublicKeyCA().getEncoded()) + "\n My Subject is : " +
+                        csrserver.getSubject() + "\n The Signature is : " + DatatypeConverter.printHexBinary(csrserver.getSign()));
             }else{
                 try {
                     throw new Exception("Server Is not Secure");

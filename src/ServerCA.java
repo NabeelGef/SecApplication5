@@ -40,7 +40,7 @@ public class ServerCA {
 
 
                                  CSR csr = clientHandler0.recieveCSR();
-                                publicKeyOther = csr.getPublicKey();
+                                 publicKeyOther = csr.getPublicKey();
                                  subjectOther = csr.getSubject();
                                       // Ringing it's Phone to check if Public Key Other is it ...
                                 byte[] sign = Crypto.CalculationSignature(privateKeyCA ,subjectOther);

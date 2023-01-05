@@ -112,7 +112,7 @@ public class Client {
 
             objectInputStream = new ObjectInputStream(other.getInputStream());
             publicKeyOther = (PublicKey) objectInputStream.readObject();
-
+            System.out.println("Public KEY OTHER : " + DatatypeConverter.printHexBinary(publicKeyOther.getEncoded()));
             Thread getFromOther = new Thread()
             {
                 @Override
@@ -252,6 +252,10 @@ public class Client {
             boolean isSign = Crypto.VERIFYINGSIGN(clientcsr.getSign(),clientcsr.getSubject(),publicKeyCA);
             if(isSign){
                 System.out.println("\nClient Get CA");
+                System.out.println("========================");
+                System.out.println("CSR Client : " +"\n publicKey : " +
+                        DatatypeConverter.printHexBinary(clientcsr.getPublicKeyCA().getEncoded()) + "\n My Subject is : " +
+                        clientcsr.getSubject() + "\n The Signature is : " + DatatypeConverter.printHexBinary(clientcsr.getSign()));
                 client.close();
             }else{
                 try {
